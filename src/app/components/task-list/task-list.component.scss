@@ -1,0 +1,151 @@
+// Variables para colores y espaciados
+$secondary-color: #f44336;
+$button-padding: 10px 15px;
+$border-radius: 5px;
+
+.task-filter {
+    margin: 20px 0;
+    display: flex;
+    gap: 3px;
+    button {
+        border: none;
+        padding: $button-padding;
+        border-radius: $border-radius;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: darken(#aeaedb, 10%);
+        }
+
+    }
+}
+
+.space-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+// Estilos para la lista de tareas
+.task-list {
+    list-style-type: none;
+    padding: 0;
+
+    .task-item {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: $border-radius;
+        padding: 15px;
+        margin-bottom: 10px;
+        position: relative;
+
+        .task-title {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .mark-completed, .delete-task {
+            color: white;
+            border: none;
+            padding: $button-padding;
+            border-radius: $border-radius;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s;
+            &--blue{
+                background-color: #4bb543;
+            }
+            &--red{
+                background-color: $secondary-color;
+            }
+            &:hover {
+                background-color: darken(#e57373, 10%);
+            }
+        }
+
+       
+        .person-list {
+            margin-top: 10px;
+            padding-left: 15px;
+
+            .person-item {
+                background-color: #f1f1f1;
+                border: 1px solid #ddd;
+                border-radius: $border-radius;
+                padding: 10px;
+                margin: 5px 0;
+
+                .person-name {
+                    font-weight: bold;
+                }
+
+                .skill-list {
+                    padding-left: 15px;
+
+                    .skill-item {
+                        list-style-type: disc;
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Responsive styles
+@media (max-width: 600px) {
+    .task-item {
+        padding: 10px;
+    }
+
+    .task-filter button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .mark-completed, .delete-task {
+        width: 100%;
+        margin-top: 5px;
+    }
+}
+
+.no-tasks-message {
+    border: 1px solid #ccc;
+    color: #777; // Color gris para el mensaje
+    font-size: 1.2em; // Tamaño de fuente más grande
+    text-align: center; // Centrar el texto
+    margin: 20px 0; // Espaciado alrededor
+    padding: 20px 0;
+}
+
+.header {
+    display: flex; // Usar flexbox para alinear el título y el botón
+    align-items: center; // Alinear verticalmente al centro
+    margin-bottom: 20px; // Espacio debajo del encabezado
+
+    h1 {
+        margin: 0; // Quitar margen por defecto del h1
+        font-size: 2em; // Tamaño de fuente para el título
+        margin-right: 10px; // Espacio a la derecha del título para separar del botón
+    }
+
+    .create-task-button {
+        background-color: rgb(161, 161, 204);
+        padding: 10px 15px; // Padding ajustado para mayor comodidad
+        border: none;
+        border-radius: 5px;
+        cursor: pointer; // Cambiar cursor al pasar sobre el botón
+        transition: background-color 0.3s; // Transición suave para el color de fondo
+
+        &:hover {
+            background-color: rgb(130, 130, 170); // Cambio de color al pasar el ratón
+        }
+
+        // Responsividad
+        @media (max-width: 600px) {
+            font-size: 0.9em; // Reducir tamaño de fuente en pantallas pequeñas
+            padding: 8px 12px; // Ajustar padding en pantallas pequeñas
+        }
+    }
+}

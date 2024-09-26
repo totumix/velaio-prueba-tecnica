@@ -1,0 +1,39 @@
+<div class="header">
+    <h1>Gestión de tareas</h1>
+    <button class="create-task-button" [routerLink]="'new'">Crear tareas</button>
+</div>
+Filtros : 
+<div class="task-filter">
+    <button (click)="setFilter('all')">Todos</button>
+    <button (click)="setFilter('completed')">Completadas</button>
+    <button (click)="setFilter('pending')">Pendientes</button>
+</div>
+
+<ul class="task-list">
+    <div *ngIf="(tasks$ | async)?.length === 0" class="no-tasks-message">
+        No hay tareas para mostrar.
+    </div>
+
+    <li *ngFor="let task of tasks$ | async" class="task-item">
+       <div class="space-between">
+        <span class="task-title">{{ task.title }} ({{ task.completed ? 'Completada' : 'Pendiente' }})</span>
+        <div>
+            <button class="mark-completed mark-completed--blue" (click)="completeTask(task.id)" *ngIf="!task.completed">
+                <span class="material-icons">done_all</span>
+            </button>
+            <button class="delete-task delete-task--red" (click)="deleteTask(task.id)">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+       </div>
+      
+        <ul class="person-list">
+            <li *ngFor="let person of task.persons" class="person-item">
+                <span class="person-name">{{ person.fullName }} - {{ person.age }} años</span>
+                <ul class="skill-list">
+                    <li *ngFor="let skill of person.skills" class="skill-item">{{ skill }}</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>

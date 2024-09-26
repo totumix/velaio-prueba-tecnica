@@ -1,0 +1,49 @@
+<form [formGroup]="taskForm" (ngSubmit)="saveTask()" class="task-form">
+    <label for="title">Título</label>
+    <input id="title" formControlName="title" class="input-field">
+    <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="error-message">
+        El título es obligatorio y debe tener al menos 5 caracteres.
+    </div>
+
+    <div formArrayName="persons" class="persons-container">
+        <div *ngFor="let person of persons.controls; let i=index" [formGroupName]="i" class="person-form">
+            <div class="person-details">
+                <label for="fullName">Nombre Persona</label>
+                <button type="button" (click)="removePerson(i)" class="remove-person-button">
+                    <span class="material-icons">delete</span>
+                </button>
+            </div>
+            <input id="fullName" formControlName="fullName" class="input-field">
+            <div *ngIf="person.get('fullName')?.invalid && person.get('fullName')?.touched" class="error-message">
+                El nombre completo es obligatorio y debe tener al menos 5 caracteres.
+            </div>
+
+            <label for="age">Edad</label>
+            <input id="age" formControlName="age" type="number" class="input-field">
+            <div *ngIf="person.get('age')?.invalid && person.get('age')?.touched" class="error-message">
+                La edad debe ser mayor de 18.
+            </div>
+
+            <div formArrayName="skills" class="skills-container">
+                <label>Habilidades</label>
+                <div *ngFor="let skill of getSkills(i).controls; let j=index" class="skill-form">
+                    <input [formControlName]="j" class="input-field" placeholder="Ingresar habilidad">
+                    <button type="button" (click)="removeSkill(i, j)" class="remove-skill-button">
+                        <span class="material-icons">delete</span>
+                    </button>
+                </div>
+                <a
+                    (click)="addSkill(i)">
+                    Agregar habilidad
+                    <span class="material-icons">add</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <a (click)="addPerson()">
+        Agregar persona
+        <span class="material-icons">add</span>
+    </a>
+    <button type="submit" [disabled]="taskForm.invalid" class="submit-button">Guardar</button>
+</form>

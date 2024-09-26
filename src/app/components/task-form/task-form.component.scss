@@ -1,0 +1,202 @@
+// Variables para colores y espaciado
+$primary-color: #4CAF50;
+$secondary-color: #f44336;
+$background-color: #f9f9f9;
+$text-color: #333;
+$border-radius: 5px;
+$input-border: #ccc;
+$input-error: #f44336;
+
+// Estilos generales del formulario
+.task-form {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: $border-radius;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .input-field {
+        padding: 10px;
+        border: 1px solid $input-border;
+        border-radius: $border-radius;
+        margin: 10px 0;
+        &:focus {
+            border-color: $primary-color;
+            outline: none;
+        }
+
+        &.ng-invalid.ng-touched {
+            border-color: $input-error;
+        }
+    }
+
+    .error-message {
+        color: $input-error;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+
+    .persons-container {
+        .person-form {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ddd;
+            border-radius: $border-radius;
+            padding: 15px;
+            margin-bottom: 15px;
+
+            .remove-person-button {
+                background-color: $secondary-color;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: $border-radius;
+                cursor: pointer;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: darken($secondary-color, 10%);
+                }
+            }
+        }
+    }
+
+    .skills-container {
+        margin-top: 10px;
+
+        .skill-form {
+            display: flex;
+            align-items: center;
+            
+            .remove-skill-button {
+                background-color: $secondary-color;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: $border-radius;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                margin-left: 10px;
+
+                &:hover {
+                    background-color: darken($secondary-color, 10%);
+                }
+            }
+        }
+
+        .add-skill-button {
+            background-color: $primary-color;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: $border-radius;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: darken($primary-color, 10%);
+            }
+        }
+    }
+
+    .add-person-button {
+        margin: 20px 0;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: $border-radius;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+
+    .submit-button {
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: $border-radius;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:disabled {
+            background-color: lighten($primary-color, 20%);
+            cursor: not-allowed;
+        }
+
+        &:hover:not(:disabled) {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+}
+
+// Responsive styles
+@media (max-width: 600px) {
+    .task-form {
+        padding: 15px;
+    }
+
+    .input-field {
+        padding: 8px;
+    }
+
+    .submit-button, .add-person-button {
+        width: 100%;
+    }
+}
+
+.person-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    label {
+        margin-right: 10px; // Espacio entre la etiqueta y el campo de entrada
+        flex-basis: 25%; // Espacio que ocupará la etiqueta
+    }
+
+    .input-field {
+        flex-grow: 1; // El campo de entrada ocupará el espacio restante
+    }
+
+    .remove-person-button {
+        background-color: $secondary-color;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: $border-radius;
+        cursor: pointer;
+        margin-left: 10px; // Espacio entre el campo de entrada y el botón
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: darken($secondary-color, 10%);
+        }
+    }
+}
+.error-message {
+    color: red; // Cambia el color según tu preferencia
+    font-size: 0.9em; // Tamaño de fuente para el mensaje de error
+    margin-top: 5px; // Espaciado para separar el mensaje del input
+}
+
+a{
+    display: flex; 
+    align-items: center; 
+    text-decoration: none; 
+    margin: 10px 0; 
+}
